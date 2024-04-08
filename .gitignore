@@ -1,0 +1,49 @@
+# Compiled Object Files
+*.o
+*.obj
+
+# Executable Files
+*.exe
+*.out
+
+# Build Directories
+build/
+bin/
+out/
+
+# IDE/Editor Specific Files and Directories
+.vscode/
+.idea/
+*.suo
+*.sdf
+*.opensdf
+*.VC.db
+*.user
+*.userprefs
+*.cbp
+*.sln
+*.suo
+*.user
+*.userprefs
+*.vs
+*.sln.docstates
+*.ilk
+*.aps
+*.pch
+*.sbr
+*.tlb
+*.tlh
+*.bak
+*.cache
+*.ncb
+*.log
+*.bin
+*.tlog
+*.idb
+*.ipch
+*.orig
+
+# Dependency Directories
+/vendor/
+/lib/
+/deps/
