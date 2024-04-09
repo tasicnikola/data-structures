@@ -141,6 +141,12 @@
   <ItemGroup>
     <ClCompile Include="linked-list.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DLList.h" />
+    <ClInclude Include="DLNode.h" />
+    <ClInclude Include="SLList.h" />
+    <ClInclude Include="SLNode.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
