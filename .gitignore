@@ -47,3 +47,5 @@ out/
 /vendor/
 /lib/
 /deps/
+
+.gitignore
