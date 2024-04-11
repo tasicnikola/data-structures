@@ -1,22 +1,24 @@
 #pragma once
-#include "SLNode.h"
+#include <iostream>
+using namespace std;
 
+template<class T>
 class DLNode {
 private:
-	int value;
-	DLNode* previous;
-	DLNode* next;
+	T value;
+	DLNode<T>* previous;
+	DLNode<T>* next;
 
 public:
-	DLNode(int value, DLNode* previous, DLNode* next) {
+	DLNode(T value, DLNode<T>* previous, DLNode<T>* next) {
 		this->value = value;
 		this->previous = previous;
 		this->next = next;
 	}
 
 	int getValue() { return value; }
-	DLNode* getPrevious() { return previous; }
-	DLNode*& getPreviousRef() { return previous; }
-	DLNode* getNext() { return next; }
-	DLNode*& getNextRef() { return next; }
+	DLNode<T>* getPrevious() { return previous; }
+	DLNode<T>*& getPreviousRef() { return previous; }
+	DLNode<T>* getNext() { return next; }
+	DLNode<T>*& getNextRef() { return next; }
 };

@@ -1,28 +1,29 @@
 #pragma once
-#include <DLNode.h>
+#include "DLNode.h"
 
+template <class T>
 class DLList {
 private:
-	DLNode* head;
-	DLNode* tail;
+	DLNode<T>* head;
+	DLNode<T>* tail;
 
 public:
 	DLList() { head = tail = nullptr; }	
 	~DLList() { while (!isEmpty()) removeFromHead(); }
 	bool isEmpty() { return head == nullptr; }
-	DLNode* getHead() { return head; }
-	DLNode* getTail() { return tail; }
+	DLNode<T>* getHead() { return head; }
+	DLNode<T>* getTail() { return tail; }
 
 	void print() {
-		DLNode* ptr = head;
+		DLNode<T>* ptr = head;
 		while (ptr != nullptr) {
 			cout << ptr->getPrevious() << "|" << ptr->getValue() << "|" << ptr->getNext() << " -> ";
 			ptr = ptr->getNext();
 		}
 	}
 
-	DLNode* find(int value) {
-		DLNode* ptr = head;
+	DLNode<T>* find(int value) {
+		DLNode<T>* ptr = head;
 		while (ptr != nullptr && ptr->getValue() != value) {
 			ptr = ptr->getNext();
 		}
@@ -31,7 +32,7 @@ public:
 	}
 
 	void insertHead(int value) {
-		DLNode* node = new DLNode(value, nullptr, head);
+		DLNode<T>* node = new DLNode(value, nullptr, head);
 		if (!head)
 			tail = node;
 		else
@@ -40,7 +41,7 @@ public:
 	}
 
 	void insertTail(int value) {
-		DLNode* node = new DLNode(value, tail, nullptr);
+		DLNode<T>* node = new DLNode(value, tail, nullptr);
 		if (!tail)
 			head = node;
 		else
@@ -48,15 +49,11 @@ public:
 		tail = node;
 	}
 
-	void insertBefore(int value, int spot) {
-
-	}
-
 	void remove(int value) {
 		if (head == nullptr)
-			throw exception("Empty list");
+			throw ("Empty list");
 
-		DLNode* ptr = head;
+		DLNode<T>* ptr = head;
 		while (ptr != nullptr && ptr->getValue() != value) {
 			ptr = ptr->getNext();
 		}
@@ -86,7 +83,7 @@ public:
 		if (!head)
 			throw exception("Empty list");
 		else {
-			DLNode* ptr = head;
+			DLNode<T>* ptr = head;
 			if (head == tail)
 				head = tail = nullptr;
 			else {
@@ -102,8 +99,8 @@ public:
 		if (!head)
 			throw exception("Empty list");
 		else {
-			DLNode* ptr = tail->getPrevious();
-			DLNode* tmp = tail;
+			DLNode<T>* ptr = tail->getPrevious();
+			DLNode<T>* tmp = tail;
 			if (tail == head)
 				head = tail = nullptr;
 			else {
@@ -113,5 +110,52 @@ public:
 
 			delete ptr;
 		}
+	}
+
+	//Write a function void MovePartToEnd(int val1, int val2) that extracts a sequence of nodes from a doubly linked list between the nodes with values val1 and val2 and moves it to the end of the list.
+	//Node values in the linked list are unique.
+	//Assume that nodes with values val1and val2 exist in the listand that the node with the value val2 is not ahead of the node with the value val1.
+	void MovePartToEnd(T val1, T val2) {
+		bool border = true;
+		DLNode<T>* ptr1 = nullptr, * ptr2 = nullptr;
+		DLNode<T>* ptr = head;
+
+		while ((ptr1 == nullptr || ptr2 == nullptr) && ptr != nullptr) {
+			if (ptr->value == val1) {
+				ptr1 = ptr;
+				if (ptr2 != nullptr) {
+					border = false;
+				}
+			}
+			if (ptr->value == val2) {
+				ptr2 = ptr;
+			}
+			ptr = ptr->next;
+		}
+
+		if (ptr1 == nullptr || ptr2 == nullptr)
+			return;
+
+		if (!border) {
+			DLNode<T>* ptrSwap = ptr1;
+			ptr1 = ptr2;
+			ptr2 = ptrSwap;
+		}
+
+		if (ptr2 == tail)
+			return;
+
+		if (ptr1->previous == nullptr) {
+			head = ptr2->next;
+		}
+		else {
+			ptr1->prev->next = ptr2->next;
+		}
+		ptr2->next->prev = ptr1->prev;
+
+		tail->next = ptr1;
+		ptr1->prev = tail;
+		ptr2->next = nullptr;
+		tail = ptr2;
 	}
 };

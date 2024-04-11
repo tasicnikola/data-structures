@@ -1,20 +1,21 @@
-// linked-list.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
+#include "SLList.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	SLList<int> list;
+
+	list.insertHead(9);
+	list.insertHead(13);
+	list.insertTail(8);
+	list.insertTail(7);
+
+	list.insertAfter(4, 7);
+	list.insertBefore(5, 4);
+	list.insertHead(10);
+
+	list.swap(10, 13);
+	list.fillInTheBlanks();
+
+	list.printList();
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file

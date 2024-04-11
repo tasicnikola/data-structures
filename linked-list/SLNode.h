@@ -28,4 +28,12 @@ public:
 	T* getValueRef() { return &value; }
 	SLNode<T>* getNext() { return next; }	
 	SLNode<T>*& getNextRef() { return next; }
+
+	void setValue(const T& val) {
+		value = val;
+	}
+
+	void setNext(SLNode<T>* nextNode) {
+		next = nextNode;
+	}
 };
