@@ -115,7 +115,7 @@ public:
 	//Write a function void MovePartToEnd(int val1, int val2) that extracts a sequence of nodes from a doubly linked list between the nodes with values val1 and val2 and moves it to the end of the list.
 	//Node values in the linked list are unique.
 	//Assume that nodes with values val1and val2 exist in the listand that the node with the value val2 is not ahead of the node with the value val1.
-	void MovePartToEnd(T val1, T val2) {
+	void movePartToEnd(T val1, T val2) {
 		bool border = true;
 		DLNode<T>* ptr1 = nullptr, * ptr2 = nullptr;
 		DLNode<T>* ptr = head;
@@ -158,4 +158,6 @@ public:
 		ptr2->next = nullptr;
 		tail = ptr2;
 	}
+
+
 };
